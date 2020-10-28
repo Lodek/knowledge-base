@@ -1,1 +1,1 @@
-- Session management in REST Api
+- CORS
