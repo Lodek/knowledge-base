@@ -1,6 +1,10 @@
 # About
 Snippets, notes, small articles, todos and what not.
 
+# Structure
+- yaml snippet on top of each file with metadata
+- .at.md for articles
+
 # Next
 - 12 factor app
 
