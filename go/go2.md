@@ -1,0 +1,17 @@
+# Go
+- capital named functions are public
+- go has modules and packages, the hierarchy is the opposite of python's. in go a module contain packages.
+- `:=` is shorthand for assigment / initialization. it uses type inference. that's cool actually, having a separate operator maybe makes things clearer, not sure.
+- functions can return tuples
+- there's tuple unpacking
+- no exceptions in go! look before you leap or whatever that dumb acronym is.
+- convention seems to dictate that: if a function can fail, return a pair with the result and an error object indicating why/what failed.
+- go uses `nil`
+- go has an `init` function that is implicitly called
+- slice types are like lists but have some nuances to them. slices are the same as in python, as in, the indexing works as expected (unlike rust).
+- slice vs array: array have a fixed length and their type notation is kinda ugly, `[n]t`, where `n` is an integer specifying the size and `t` is a concrete type (e.g. `[10]int`). slices have a similar notation but the size isn't specified.
+- array nuances: an array is considered a value, which means, if passed to a function, pass by value is applied (as opposed to by reference (ie it copies shit)). arrays are strongly typed and their size is taken into account. conceptually similar to a homogenous tuple.
+- somethign is busting my brain a bit. in Go types are values... NANI. for instance `make([]byte)`, `make(map[string]string)`; the make function takes a type which seems like a value?? this is slightly disturbing, or rather, it's novel. it approaches types as first class citzens almost? idk, i can't make sense of it yet. types are primitive values.
+- for loop of a slice enumerate items by default
+- there are structs
+- let there be interfaces.
