@@ -45,3 +45,7 @@ Contrary to my prior believes, cookies don't break REST, it's just another way t
 
 [Read](https://softwareengineering.stackexchange.com/questions/141019/should-cookies-be-used-in-a-restful-api)
 
+
+A really good resource is a [talk](https://skillsmatter.com/skillscasts/5398-the-state-of-securing-restful-apis-with-spring) given by a member of spring security.
+He addresses practical concerns.
+Cookies are more convenient and good enough; it seems to be a "practicality beats purity" situation.
