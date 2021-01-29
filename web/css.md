@@ -1,0 +1,3 @@
+- Padding defines the spacing between and element and its content.
+- Margin refers to the space of an element and its suroundings.
+- A div grows to fit its elements
