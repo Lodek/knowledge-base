@@ -14,4 +14,5 @@ Unit testing *should* be a blackbox test.
 Testing internal logic ties the test to the implementation which makes it brittle.
 
 # 1
+- enterprise app: usually automate an organization's internal processes. They often have complex business logic, which isn't really logical and low performance requirements.
 
