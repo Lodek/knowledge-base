@@ -61,3 +61,83 @@ A reference to the valued owned by a variable is made using the `&` operator.
 let owner = String::from("foo");
 let ref: &String = &owner;
 ```
+# On traits vs interfaces
+Althought I've studied Haskell before and it has the concept of typeclasses, the difference between a typeclass/trait vs interface has always been blurry to me.
+After a few tests I think I understand it better, here's the outline.
+Given the following struct:
+```rust
+struct Foo<T> {
+    value: T
+}
+```
+- It's not possible to implement a trait for a concrete type (eg `impl<String> Foo<String>`).
+In that context String will be interpreted as the name of the generic, not the type `String`.
+- It's not possible to define the same method for different trait constraints.
+
+Through that, it's possible to see one difference between how interfaces and traits are implemented using generics.
+In Java, a generic class can only have one implementation and hence only one constraint.
+It's not possible to define a method in a generic class that is only available for one constrained generic (eg `<T extends Iterable>`).
+The same is possible using Traits.
+
+```java
+impl<T> Foo<T> {
+    fn do_foo(&self) {
+        println!("foo!");
+    }
+}
+
+impl<T: Display> Foo<T> {
+    fn foo_for_display(&self) {
+        println!("display foo");
+    }
+}
+```
+
+Another characteristic of Traits is that they allow for default implementations.
+I don't know about other languages but default method implementation in Java wasn't a thing until later on.
+
+Finally, the real money maker is blanket implementation.
+Blanket implementations are something I remember from Haskell.
+It allows for a tree of traits to be implemented, which means if type `Foo` implements trait `A` and there exists a trait `B` which implements on generics that implement `A`, `Foo` has `B`.
+
+Ex:
+```rust
+impl<T: Display> ToString for T {
+```
+
+## Associated types
+
+Associated types in traits are used by what was called a type constructor in Haskell, similar to the monad type class.
+The monad type class would consoome a type constructor `m a` and define methods over the type of `a`.
+Hmm, I don't know if my analogies to Haskell hold in this scenario...
+Seems like a monad would be a generic. The `[a]` notation reminds me of generics. `m a`, `f a` are also generics.
+Or are they.
+
+Anyhow, associated types are used as a placeholder to define the methods in a trait.
+Essentially, the trait implementing party will fill in the blank at definition time.
+
+Why not a generic?
+Can traits be generic in Rust?
+Let's ponder...
+
+```
+trait Traity<T> {
+  fn traity_fun(&self) -> T
+}
+```
+A trait called `Traity` defining a method called `traity_fun`.
+How would we go about implementing this?!...
+I can't quite see a problem..
+
+```rust
+struct Foo{
+    a: i32
+}
+
+impl Traity<i32> for Foo {
+    fn traity_fun(&self) {
+        self.a
+    }
+}
+```
+

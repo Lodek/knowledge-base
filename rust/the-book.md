@@ -12,6 +12,11 @@ book:
 - panic on caller side errors, as in, error made by the programmer, not input or invalid data.
 - panic when there's a potential security threat
 
+# 10
+- Due to the borrow checker, the only case a function can return a reference is if it receives a reference. there is no other case where returning a reference would have a permissible lifetime.
+- When a function receives more than one references and returns a reference, we got a problem because the compiler isn't able to correctly compute for how long the return reference has to live for  because it doesn't know from which input  reference the return reference is associated to.
+- When a function with lifetimes is called, the compilers substitue the generic lifetimes for the smallest lifetime of the calling arguments and the enforces it.
+
 # 13
 - Rust Iterators remind me of higher kinded data type as in haskell. I don't remember the specifics about kindess of a type, but it's a type that returns a type. A type constructor. Then traits like Monads are a function that takes a higher order type and returns a constraint. The iterator trait seems to follow that pattern
 - Iterator adaptor vs consuming adapators. Erm, one seems to be map-like iterators that operator over an iterator and return a new one. The other is a fold-lke function that produces a result from an interator
